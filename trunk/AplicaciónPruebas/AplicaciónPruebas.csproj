@@ -1,0 +1,692 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{97B14A18-394E-4FAF-BA83-5A9C45C4307E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AplicaciónPruebas</RootNamespace>
+    <AssemblyName>AplicaciónPruebas</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConceptoContenedorFormulario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConceptoContenedorFormulario.Designer.cs">
+      <DependentUpon>ConceptoContenedorFormulario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ConceptoContenedorFormulario.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ConceptoContenedorFormulario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.es.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Taxonomia\AccountsPayable.cs" />
+    <Compile Include="Taxonomia\AccountsPayableAccruedExpenses.cs" />
+    <Compile Include="Taxonomia\AccountsReceivableRelatedPartyCurrent.cs" />
+    <Compile Include="Taxonomia\AccountsReceivableRelatedPartyNonCurrent.cs" />
+    <Compile Include="Taxonomia\AccountsReceivableTradeGross.cs" />
+    <Compile Include="Taxonomia\AccountsReceivableTradeNet.cs" />
+    <Compile Include="Taxonomia\AccruedAdvertising.cs" />
+    <Compile Include="Taxonomia\AccruedBonuses.cs" />
+    <Compile Include="Taxonomia\AccruedExpenses.cs" />
+    <Compile Include="Taxonomia\AccruedIncome.cs" />
+    <Compile Include="Taxonomia\AccruedInsurance.cs" />
+    <Compile Include="Taxonomia\AccruedInterest.cs" />
+    <Compile Include="Taxonomia\AccruedRoyalties.cs" />
+    <Compile Include="Taxonomia\AccruedTaxes.cs" />
+    <Compile Include="Taxonomia\AccruedVacation.cs" />
+    <Compile Include="Taxonomia\AccumulatedAmortizationCapitalLeasedAssets.cs" />
+    <Compile Include="Taxonomia\AccumulatedAmortizationComputerSoftwareCosts.cs" />
+    <Compile Include="Taxonomia\AccumulatedAmortizationIntangibleAssets.cs" />
+    <Compile Include="Taxonomia\AccumulatedAmortizationPPE.cs" />
+    <Compile Include="Taxonomia\AccumulatedDepreciationAmortization.cs" />
+    <Compile Include="Taxonomia\AcquisitionBusinessesNetCashAcquired.cs" />
+    <Compile Include="Taxonomia\AcquisitionDivestitureBusinessActivitiesNet.cs" />
+    <Compile Include="Taxonomia\AdjustmentCumulativeTranslationAdjustment.cs" />
+    <Compile Include="Taxonomia\AdjustmentCumulativeTranslationAdjustmentRetainedEarnings.cs" />
+    <Compile Include="Taxonomia\AdjustmentRelatedPartyTransactions.cs" />
+    <Compile Include="Taxonomia\AdjustmentRelatedPartyTransactionsContributedSurplus.cs" />
+    <Compile Include="Taxonomia\AdjustmentsReconcileNetIncomeLossNetCashProvidedByUsedOperations.cs" />
+    <Compile Include="Taxonomia\AllowanceDoubtfulAccounts.cs" />
+    <Compile Include="Taxonomia\Amortization.cs" />
+    <Compile Include="Taxonomia\AmortizationAcquisitionCosts.cs" />
+    <Compile Include="Taxonomia\AmortizationChangesBalances.cs" />
+    <Compile Include="Taxonomia\AmortizationIntangibles.cs" />
+    <Compile Include="Taxonomia\AmortizationIntangiblesCashFlow.cs" />
+    <Compile Include="Taxonomia\AmortizationPPE.cs" />
+    <Compile Include="Taxonomia\AmountsDueRelatedParties.cs" />
+    <Compile Include="Taxonomia\AssetImpairmentCharge.cs" />
+    <Compile Include="Taxonomia\AssetRetirementObligation.cs" />
+    <Compile Include="Taxonomia\Assets.cs" />
+    <Compile Include="Taxonomia\AssetsHeldSaleCurrent.cs" />
+    <Compile Include="Taxonomia\AssetsHeldSaleNonCurrent.cs" />
+    <Compile Include="Taxonomia\AssetsLiabilitiesEquity.cs" />
+    <Compile Include="Taxonomia\BankOverdrafts.cs" />
+    <Compile Include="Taxonomia\BasicEarningsPerShareNetIncome.cs" />
+    <Compile Include="Taxonomia\Buildings.cs" />
+    <Compile Include="Taxonomia\BusinessExitCosts.cs" />
+    <Compile Include="Taxonomia\BusinessExitCostsChangesBalances.cs" />
+    <Compile Include="Taxonomia\CapitalAdditionsNet.cs" />
+    <Compile Include="Taxonomia\CapitalLeasedAssetsGross.cs" />
+    <Compile Include="Taxonomia\CapitalLeasedAssetsNet.cs" />
+    <Compile Include="Taxonomia\CapitalLeaseObligationsCurrent.cs" />
+    <Compile Include="Taxonomia\CapitalLeaseObligationsLongTerm.cs" />
+    <Compile Include="Taxonomia\CapitalLeaseObligationsShortTermLongTerm.cs" />
+    <Compile Include="Taxonomia\CashCashEquivalents.cs" />
+    <Compile Include="Taxonomia\CashCashEquivalentsBalance.cs" />
+    <Compile Include="Taxonomia\CashCashEquivalentsShortTermInvestments.cs" />
+    <Compile Include="Taxonomia\CashDividend.cs" />
+    <Compile Include="Taxonomia\CashEquivalents.cs" />
+    <Compile Include="Taxonomia\CashInterestExpense.cs" />
+    <Compile Include="Taxonomia\CashPaidEmployeesSuppliers.cs" />
+    <Compile Include="Taxonomia\CashPaymentsRestructuring.cs" />
+    <Compile Include="Taxonomia\CashSaleGoodsServices.cs" />
+    <Compile Include="Taxonomia\CashSurrenderValueLifeInsurance.cs" />
+    <Compile Include="Taxonomia\ChangeAccountingPolicy.cs" />
+    <Compile Include="Taxonomia\ChangeAccountingPolicyContributedSurplus.cs" />
+    <Compile Include="Taxonomia\ChangeAccountsPayable.cs" />
+    <Compile Include="Taxonomia\ChangeAccountsPayableAccruedExpenses.cs" />
+    <Compile Include="Taxonomia\ChangeAccruedExpenses.cs" />
+    <Compile Include="Taxonomia\ChangeAssets.cs" />
+    <Compile Include="Taxonomia\ChangeBankOverdraftsNet.cs" />
+    <Compile Include="Taxonomia\ChangeDeferredUnearnedCompensation.cs" />
+    <Compile Include="Taxonomia\ChangeDeferredUnearnedCompensationContributedSurplus.cs" />
+    <Compile Include="Taxonomia\ChangeDeposits.cs" />
+    <Compile Include="Taxonomia\ChangeEmployeeRelatedLiabilities.cs" />
+    <Compile Include="Taxonomia\ChangeFinanceReceivables.cs" />
+    <Compile Include="Taxonomia\ChangeInBalances.cs" />
+    <Compile Include="Taxonomia\ChangeIncomeTaxesPayable.cs" />
+    <Compile Include="Taxonomia\ChangeInterestPayableNet.cs" />
+    <Compile Include="Taxonomia\ChangeInventories.cs" />
+    <Compile Include="Taxonomia\ChangeLiabilities.cs" />
+    <Compile Include="Taxonomia\ChangeOperatingAssetsLiabilities.cs" />
+    <Compile Include="Taxonomia\ChangeOtherAssets.cs" />
+    <Compile Include="Taxonomia\ChangeOtherAssetsNet.cs" />
+    <Compile Include="Taxonomia\ChangeOtherCurrentAssets.cs" />
+    <Compile Include="Taxonomia\ChangeOtherCurrentLiabilities.cs" />
+    <Compile Include="Taxonomia\ChangeOtherLiabilities.cs" />
+    <Compile Include="Taxonomia\ChangePrepaidPensionCosts.cs" />
+    <Compile Include="Taxonomia\ChangeReceivables.cs" />
+    <Compile Include="Taxonomia\ChangeRelatedPartyAccountsReceivable.cs" />
+    <Compile Include="Taxonomia\ChangeRelatedPartyNotesReceivable.cs" />
+    <Compile Include="Taxonomia\ChangeRelatedPartyReceivables.cs" />
+    <Compile Include="Taxonomia\ChangeRetainedEarningsNetIncome.cs" />
+    <Compile Include="Taxonomia\ChangesContributedSurplusBalance.cs" />
+    <Compile Include="Taxonomia\ChangeShortTermBorrowings.cs" />
+    <Compile Include="Taxonomia\ChangeShortTermInvestments.cs" />
+    <Compile Include="Taxonomia\ChangesRetainedEarningsValue.cs" />
+    <Compile Include="Taxonomia\ChangesStockNumberSharesAmount.cs" />
+    <Compile Include="Taxonomia\CommitmentsContingencies.cs" />
+    <Compile Include="Taxonomia\CommonStockTransactionsNet.cs" />
+    <Compile Include="Taxonomia\ComputerSoftwareCostsGross.cs" />
+    <Compile Include="Taxonomia\ComputerSoftwareCostsNet.cs" />
+    <Compile Include="Taxonomia\ConstructionProgress.cs" />
+    <Compile Include="Taxonomia\ContractReceivablesNet.cs" />
+    <Compile Include="Taxonomia\ContributedSurplus.cs" />
+    <Compile Include="Taxonomia\ContributedSurplusBalance.cs" />
+    <Compile Include="Taxonomia\ContributedSurplusBalancePar.cs" />
+    <Compile Include="Taxonomia\ConversionDebtSecurities.cs" />
+    <Compile Include="Taxonomia\ConvertibleDebt.cs" />
+    <Compile Include="Taxonomia\ConvertiblePreferredShares.cs" />
+    <Compile Include="Taxonomia\ConvertibleSecuritiesContributedSurplus.cs" />
+    <Compile Include="Taxonomia\ConvertibleSecuritiesNumberShares.cs" />
+    <Compile Include="Taxonomia\ConvertibleSecuritiesRetainedEarnings.cs" />
+    <Compile Include="Taxonomia\ConvertibleSecuritiesStock.cs" />
+    <Compile Include="Taxonomia\CorrectionError.cs" />
+    <Compile Include="Taxonomia\CorrectionErrorContributedSurplus.cs" />
+    <Compile Include="Taxonomia\CostGoodsServicesSold.cs" />
+    <Compile Include="Taxonomia\CostGoodsSold.cs" />
+    <Compile Include="Taxonomia\CostGoodsSoldDepreciation.cs" />
+    <Compile Include="Taxonomia\CostGoodsSoldDirectLabor.cs" />
+    <Compile Include="Taxonomia\CostGoodsSoldDirectMaterials.cs" />
+    <Compile Include="Taxonomia\CostGoodsSoldOther.cs" />
+    <Compile Include="Taxonomia\CostGoodsSoldOverhead.cs" />
+    <Compile Include="Taxonomia\CostServices.cs" />
+    <Compile Include="Taxonomia\CostServicesDepreciation.cs" />
+    <Compile Include="Taxonomia\CostServicesDirectLabor.cs" />
+    <Compile Include="Taxonomia\CostServicesDirectMaterials.cs" />
+    <Compile Include="Taxonomia\CostServicesOther.cs" />
+    <Compile Include="Taxonomia\CostServicesOverhead.cs" />
+    <Compile Include="Taxonomia\CumulativeEffectChangeAccountingPrincipleNetTaxEffectPerDilutedShare.cs" />
+    <Compile Include="Taxonomia\CumulativeEffectChangeAccountingPrincipleNetTaxEffectPerOutstandingShare.cs" />
+    <Compile Include="Taxonomia\CumulativeTranslationAdjustmentNetTaxEffect.cs" />
+    <Compile Include="Taxonomia\CurrentAssets.cs" />
+    <Compile Include="Taxonomia\CurrentFederalTax.cs" />
+    <Compile Include="Taxonomia\CurrentForeignTax.cs" />
+    <Compile Include="Taxonomia\CurrentIncomeTaxExpenseBenefit.cs" />
+    <Compile Include="Taxonomia\CurrentLiabilities.cs" />
+    <Compile Include="Taxonomia\CurrentOtherTax.cs" />
+    <Compile Include="Taxonomia\CurrentPortionLongTermDebt.cs" />
+    <Compile Include="Taxonomia\CurrentPortionRelatedPartyDebt.cs" />
+    <Compile Include="Taxonomia\CurrentProvincialLocalTaxes.cs" />
+    <Compile Include="Taxonomia\CurrentTaxAssets.cs" />
+    <Compile Include="Taxonomia\CustomerAdvancesDepositsCurrent.cs" />
+    <Compile Include="Taxonomia\CustomerAdvancesDepositsLongTerm.cs" />
+    <Compile Include="Taxonomia\DebtCapitalLeaseObligationsCurrent.cs" />
+    <Compile Include="Taxonomia\DebtCapitalLeaseObligationsLongTerm.cs" />
+    <Compile Include="Taxonomia\DebtRelatedCommitmentFees.cs" />
+    <Compile Include="Taxonomia\DeferredCompensation.cs" />
+    <Compile Include="Taxonomia\DeferredESOPBenefits.cs" />
+    <Compile Include="Taxonomia\DeferredFinancingCosts.cs" />
+    <Compile Include="Taxonomia\DeferredLongTermAssetCharges.cs" />
+    <Compile Include="Taxonomia\DeferredResearchDevelopmentCostsNet.cs" />
+    <Compile Include="Taxonomia\DeferredRevenue.cs" />
+    <Compile Include="Taxonomia\DeferredUnearnedRevenueCurrent.cs" />
+    <Compile Include="Taxonomia\DeferredUnearnedRevenueLongTerm.cs" />
+    <Compile Include="Taxonomia\DepositsCurrent.cs" />
+    <Compile Include="Taxonomia\DepositsNonCurrent.cs" />
+    <Compile Include="Taxonomia\DepreciationAmortizationChangesBalances.cs" />
+    <Compile Include="Taxonomia\DerivativeAssetsCurrent.cs" />
+    <Compile Include="Taxonomia\DerivativeAssetsNonCurrent.cs" />
+    <Compile Include="Taxonomia\DerivativeLiabilities.cs" />
+    <Compile Include="Taxonomia\DerivativeLiabilitiesLongTerm.cs" />
+    <Compile Include="Taxonomia\Description.cs" />
+    <Compile Include="Taxonomia\DilutedEarningsPerShareNetIncome.cs" />
+    <Compile Include="Taxonomia\DividendIncome.cs" />
+    <Compile Include="Taxonomia\DividendsDeclaredButNotPaid.cs" />
+    <Compile Include="Taxonomia\DividendsOnCommonPreferredStock.cs" />
+    <Compile Include="Taxonomia\DividendsPayable.cs" />
+    <Compile Include="Taxonomia\DividendsReceived.cs" />
+    <Compile Include="Taxonomia\DueFromOfficersStockholdersCurrent.cs" />
+    <Compile Include="Taxonomia\DueFromOfficersStockholdersNonCurrent.cs" />
+    <Compile Include="Taxonomia\DueToOfficersStockholdersCurrent.cs" />
+    <Compile Include="Taxonomia\DueToOfficersStockholdersNonCurrent.cs" />
+    <Compile Include="Taxonomia\EarningsLossesEquityInvestments.cs" />
+    <Compile Include="Taxonomia\EffectExchangeRateOnCashCashEquivalents.cs" />
+    <Compile Include="Taxonomia\Elemento.cs" />
+    <Compile Include="Taxonomia\EmployeeBenefits.cs" />
+    <Compile Include="Taxonomia\EmployeeRelatedLiabilities.cs" />
+    <Compile Include="Taxonomia\EmployeeShareLoanRepayments.cs" />
+    <Compile Include="Taxonomia\EmployeeShareLoans.cs" />
+    <Compile Include="Taxonomia\EnvironmentalLiability.cs" />
+    <Compile Include="Taxonomia\EnvironmentalRemediation.cs" />
+    <Compile Include="Taxonomia\Equity.cs" />
+    <Compile Include="Taxonomia\ESOPRestrictedStockExpense.cs" />
+    <Compile Include="Taxonomia\ExchangeGainsLosses.cs" />
+    <Compile Include="Taxonomia\ExerciseStockOptions.cs" />
+    <Compile Include="Taxonomia\ExerciseStockOptionsContributedSurplus.cs" />
+    <Compile Include="Taxonomia\ExerciseStockOptionsNumberShares.cs" />
+    <Compile Include="Taxonomia\ExerciseStockOptionsRetainedEarnings.cs" />
+    <Compile Include="Taxonomia\ExtinguishmentDebt.cs" />
+    <Compile Include="Taxonomia\ExtraordinaryGainLoss.cs" />
+    <Compile Include="Taxonomia\ExtraordinaryItemsGross.cs" />
+    <Compile Include="Taxonomia\ExtraordinaryItemsNetTaxEffect.cs" />
+    <Compile Include="Taxonomia\FairValueAssetsAcquired.cs" />
+    <Compile Include="Taxonomia\FinanceReceivablesNet.cs" />
+    <Compile Include="Taxonomia\FinanceRevenue.cs" />
+    <Compile Include="Taxonomia\FinancingInterestExpense.cs" />
+    <Compile Include="Taxonomia\FinancingReceivablesNonCurrent.cs" />
+    <Compile Include="Taxonomia\ForeignCurrencyExchangeGainsLosses.cs" />
+    <Compile Include="Taxonomia\FurnitureFixtures.cs" />
+    <Compile Include="Taxonomia\FutureFederalIncomeTax.cs" />
+    <Compile Include="Taxonomia\FutureForeignIncomeTax.cs" />
+    <Compile Include="Taxonomia\FutureIncomeTaxes.cs" />
+    <Compile Include="Taxonomia\FutureIncomeTaxesCurrentPortion.cs" />
+    <Compile Include="Taxonomia\FutureIncomeTaxesLiabilityCurrent.cs" />
+    <Compile Include="Taxonomia\FutureIncomeTaxExpenseBenefit.cs" />
+    <Compile Include="Taxonomia\FutureIncomeTaxLiabilities.cs" />
+    <Compile Include="Taxonomia\FutureOtherTax.cs" />
+    <Compile Include="Taxonomia\FutureProvincialLocalIncomeTax.cs" />
+    <Compile Include="Taxonomia\FutureTaxAssetNonCurrent.cs" />
+    <Compile Include="Taxonomia\GainLossOnDispositionAssets.cs" />
+    <Compile Include="Taxonomia\GainLossOnSaleBusiness.cs" />
+    <Compile Include="Taxonomia\GainLossOnSaleBusinessChangesBalances.cs" />
+    <Compile Include="Taxonomia\GainLossOtherExtraordinaryItems.cs" />
+    <Compile Include="Taxonomia\GainLossRelatedLitigationSettlement.cs" />
+    <Compile Include="Taxonomia\GainOnSettlementPensionObligation.cs" />
+    <Compile Include="Taxonomia\GainsLossesOnSaleSecuritiesOtherInvestments.cs" />
+    <Compile Include="Taxonomia\GeneralAdministrativeExpenses.cs" />
+    <Compile Include="Taxonomia\GeneralPartnerDistributions.cs" />
+    <Compile Include="Taxonomia\GrossProfit.cs" />
+    <Compile Include="Taxonomia\ImpairmentGoodwill.cs" />
+    <Compile Include="Taxonomia\ImpairmentLongLivedAssetsCertainIntangibles.cs" />
+    <Compile Include="Taxonomia\IncomeBeforeCumulativeEffectChangeAccountingPrinciplePerDilutedShare.cs" />
+    <Compile Include="Taxonomia\IncomeBeforeCumulativeEffectChangeAccountingPrinciplePerOutstandingShare.cs" />
+    <Compile Include="Taxonomia\IncomeBeforeExtraordinaryItemsCumulativeEffectChangeAccountingPrinciple.cs" />
+    <Compile Include="Taxonomia\IncomeBeforeExtraordinaryItemsCumulativeEffectChangeAccountingPrinciplePerDilutedShare.cs" />
+    <Compile Include="Taxonomia\IncomeBeforeExtraordinaryItemsCumulativeEffectChangeAccountingPrinciplePerOutstandingShare.cs" />
+    <Compile Include="Taxonomia\IncomeExpenses.cs" />
+    <Compile Include="Taxonomia\IncomeLossContinuingOperations.cs" />
+    <Compile Include="Taxonomia\IncomeLossContinuingOperationsBeforeIncomeTaxes.cs" />
+    <Compile Include="Taxonomia\IncomeLossContinuingOperationsPerDilutedShare.cs" />
+    <Compile Include="Taxonomia\IncomeLossContinuingOperationsPerOutstandingShare.cs" />
+    <Compile Include="Taxonomia\IncomeLossDiscontinuedOperations.cs" />
+    <Compile Include="Taxonomia\IncomeLossDiscontinuedOperationsChangesBalances.cs" />
+    <Compile Include="Taxonomia\IncomeLossDiscontinuedOperationsNetTaxEffect.cs" />
+    <Compile Include="Taxonomia\IncomeLossDispositionDiscontinuedOperations.cs" />
+    <Compile Include="Taxonomia\IncomeLossDispositionDiscontinuedOperationsPerDilutedShare.cs" />
+    <Compile Include="Taxonomia\IncomeLossDispositionDiscontinuedOperationsPerOutstandingShare.cs" />
+    <Compile Include="Taxonomia\IncomeLossDuringPhaseOutPeriod.cs" />
+    <Compile Include="Taxonomia\IncomeLossExtraordinaryItemsNetTaxEffectPerDilutedShare.cs" />
+    <Compile Include="Taxonomia\IncomeLossExtraordinaryItemsNetTaxEffectPerOutstandingShare.cs" />
+    <Compile Include="Taxonomia\IncomeTaxesPaid.cs" />
+    <Compile Include="Taxonomia\IncomeTaxesPayable.cs" />
+    <Compile Include="Taxonomia\IncomeTaxReceivableCurrent.cs" />
+    <Compile Include="Taxonomia\IncreaseEquityDueSharesIssuedBySubsidiary.cs" />
+    <Compile Include="Taxonomia\IncreaseEquityDueSharesIssuedBySubsidiaryCumulativeTranslationAmount.cs" />
+    <Compile Include="Taxonomia\IncreaseEquityDueSharesRemainingBeIssuedAcquisition.cs" />
+    <Compile Include="Taxonomia\IncreaseEquityDueSharesRemainingBeIssuedAcquisitionCumulativeTranslationAmount.cs" />
+    <Compile Include="Taxonomia\IntangibleAssetsComputerSoftware.cs" />
+    <Compile Include="Taxonomia\IntangibleAssetsContractualRights.cs" />
+    <Compile Include="Taxonomia\IntangibleAssetsCopyrights.cs" />
+    <Compile Include="Taxonomia\IntangibleAssetsCost.cs" />
+    <Compile Include="Taxonomia\IntangibleAssetsCustomerLists.cs" />
+    <Compile Include="Taxonomia\IntangibleAssetsFranchiseRights.cs" />
+    <Compile Include="Taxonomia\IntangibleAssetsGoodwill.cs" />
+    <Compile Include="Taxonomia\IntangibleAssetsLicenses.cs" />
+    <Compile Include="Taxonomia\IntangibleAssetsMediaContent.cs" />
+    <Compile Include="Taxonomia\IntangibleAssetsNet.cs" />
+    <Compile Include="Taxonomia\IntangibleAssetsNoncompeteAgreements.cs" />
+    <Compile Include="Taxonomia\IntangibleAssetsPatents.cs" />
+    <Compile Include="Taxonomia\IntangibleAssetsRoyalty.cs" />
+    <Compile Include="Taxonomia\IntangibleAssetsTrademarksBrandNames.cs" />
+    <Compile Include="Taxonomia\IntangibleAssetsTradeNames.cs" />
+    <Compile Include="Taxonomia\IntangibleAssetsTradeSecrets.cs" />
+    <Compile Include="Taxonomia\InterestDividendsOnLoansOtherDebtEquityOtherEntities.cs" />
+    <Compile Include="Taxonomia\InterestExpense.cs" />
+    <Compile Include="Taxonomia\InterestIncome.cs" />
+    <Compile Include="Taxonomia\InterestIncomeExpenseNet.cs" />
+    <Compile Include="Taxonomia\InterestPayable.cs" />
+    <Compile Include="Taxonomia\InterestPaymentsLendersOtherCreditors.cs" />
+    <Compile Include="Taxonomia\InterestReceived.cs" />
+    <Compile Include="Taxonomia\InternalUseComputerSoftware.cs" />
+    <Compile Include="Taxonomia\InventoriesFinishedGoods.cs" />
+    <Compile Include="Taxonomia\InventoriesNet.cs" />
+    <Compile Include="Taxonomia\InventoriesRawMaterials.cs" />
+    <Compile Include="Taxonomia\InventoriesSupplies.cs" />
+    <Compile Include="Taxonomia\InventoriesWorkProcess.cs" />
+    <Compile Include="Taxonomia\InventoryObsolescenceReserve.cs" />
+    <Compile Include="Taxonomia\InvestmentEquitySecurities.cs" />
+    <Compile Include="Taxonomia\InvestmentNonConsolidatedSubsidiaries.cs" />
+    <Compile Include="Taxonomia\InvestmentProceeds.cs" />
+    <Compile Include="Taxonomia\LaborRelatedExpenses.cs" />
+    <Compile Include="Taxonomia\Land.cs" />
+    <Compile Include="Taxonomia\LandBuildingsImprovements.cs" />
+    <Compile Include="Taxonomia\LandImprovements.cs" />
+    <Compile Include="Taxonomia\LeaseholdImprovements.cs" />
+    <Compile Include="Taxonomia\LeaseRentalExpense.cs" />
+    <Compile Include="Taxonomia\LeasingReceivablesNet.cs" />
+    <Compile Include="Taxonomia\Liabilities.cs" />
+    <Compile Include="Taxonomia\LiabilitiesAssumed.cs" />
+    <Compile Include="Taxonomia\LiabilitiesRelatedAssetsHeldSaleCurrent.cs" />
+    <Compile Include="Taxonomia\LiabilitiesRelatedAssetsHeldSaleNonCurrent.cs" />
+    <Compile Include="Taxonomia\LineCreditCurrent.cs" />
+    <Compile Include="Taxonomia\LineCreditLongTermDebt.cs" />
+    <Compile Include="Taxonomia\LitigationExpense.cs" />
+    <Compile Include="Taxonomia\LitigationReserve.cs" />
+    <Compile Include="Taxonomia\LoansLongTermPortion.cs" />
+    <Compile Include="Taxonomia\LoansPayableCurrent.cs" />
+    <Compile Include="Taxonomia\LongTermDebt.cs" />
+    <Compile Include="Taxonomia\LongTermInvestments.cs" />
+    <Compile Include="Taxonomia\LossOnRetirementPropertyPlantEquipment.cs" />
+    <Compile Include="Taxonomia\MachineryEquipment.cs" />
+    <Compile Include="Taxonomia\MarketingAdvertisingExpenses.cs" />
+    <Compile Include="Taxonomia\MergerAcquisitionsCosts.cs" />
+    <Compile Include="Taxonomia\MergerRelatedExpenses.cs" />
+    <Compile Include="Taxonomia\MinorityInterest.cs" />
+    <Compile Include="Taxonomia\MinorityInterestChangesBalances.cs" />
+    <Compile Include="Taxonomia\MinorityInterestNetTaxEffect.cs" />
+    <Compile Include="Taxonomia\MinorityInterestSubsidiaryChangesBalances.cs" />
+    <Compile Include="Taxonomia\NetCashFlowsProvidedByUsedFinancingActivities.cs" />
+    <Compile Include="Taxonomia\NetCashFlowsProvidedByUsedInvestingActivities.cs" />
+    <Compile Include="Taxonomia\NetCashFlowsProvidedByUsedOperatingActivitiesDirect.cs" />
+    <Compile Include="Taxonomia\NetCashFlowsProvidedByUsedOperatingActivitiesIndirect.cs" />
+    <Compile Include="Taxonomia\NetChangeDebt.cs" />
+    <Compile Include="Taxonomia\NetChangeLongTermDebtCapitalSecurities.cs" />
+    <Compile Include="Taxonomia\NetIncome.cs" />
+    <Compile Include="Taxonomia\NetIncomeApplicableCommonStockholders.cs" />
+    <Compile Include="Taxonomia\NetIncomeLoss.cs" />
+    <Compile Include="Taxonomia\NetIncreaseDecreaseCashCashEquivalents.cs" />
+    <Compile Include="Taxonomia\NetProceedsBorrowings.cs" />
+    <Compile Include="Taxonomia\NetProceedsStockPlans.cs" />
+    <Compile Include="Taxonomia\NonCashExpenses.cs" />
+    <Compile Include="Taxonomia\NonCashInvestingFinancingActivities.cs" />
+    <Compile Include="Taxonomia\NonCurrentAssets.cs" />
+    <Compile Include="Taxonomia\NonCurrentNotesReceivable.cs" />
+    <Compile Include="Taxonomia\NonCurrentRelatedPartyReceivables.cs" />
+    <Compile Include="Taxonomia\NonOperatingIncomeExpense.cs" />
+    <Compile Include="Taxonomia\NotesLoansLongTerm.cs" />
+    <Compile Include="Taxonomia\NotesLoansPayableCurrent.cs" />
+    <Compile Include="Taxonomia\NotesPayableCurrentPortion.cs" />
+    <Compile Include="Taxonomia\NotesPayableLongTerm.cs" />
+    <Compile Include="Taxonomia\NotesReceivableNet.cs" />
+    <Compile Include="Taxonomia\NotesReceivableNetCurrentPortion.cs" />
+    <Compile Include="Taxonomia\NotesReceivableRelatedPartyCurrent.cs" />
+    <Compile Include="Taxonomia\NotesReceivableRelatedPartyNonCurrent.cs" />
+    <Compile Include="Taxonomia\OfficeComputerEquipment.cs" />
+    <Compile Include="Taxonomia\OfficersCompensation.cs" />
+    <Compile Include="Taxonomia\OperatingExpenses.cs" />
+    <Compile Include="Taxonomia\OperatingProfit.cs" />
+    <Compile Include="Taxonomia\OperatingRevenue.cs" />
+    <Compile Include="Taxonomia\OtherAccountsPayable.cs" />
+    <Compile Include="Taxonomia\OtherAccruedExpenses.cs" />
+    <Compile Include="Taxonomia\OtherAdjustments.cs" />
+    <Compile Include="Taxonomia\OtherAdjustmentsCashFlow.cs" />
+    <Compile Include="Taxonomia\OtherAdjustmentsNetIncome.cs" />
+    <Compile Include="Taxonomia\OtherAssetsNonCurrent.cs" />
+    <Compile Include="Taxonomia\OtherCashPayments.cs" />
+    <Compile Include="Taxonomia\OtherCashReceipts.cs" />
+    <Compile Include="Taxonomia\OtherChangesInContributedSurplus.cs" />
+    <Compile Include="Taxonomia\OtherChangesNet.cs" />
+    <Compile Include="Taxonomia\OtherChangesRetainedEarnings.cs" />
+    <Compile Include="Taxonomia\OtherChangesStock.cs" />
+    <Compile Include="Taxonomia\OtherChangesStockNumberShares.cs" />
+    <Compile Include="Taxonomia\OtherCurrentAssets.cs" />
+    <Compile Include="Taxonomia\OtherCurrentLiabilities.cs" />
+    <Compile Include="Taxonomia\OtherEmployeeBenefitsLiabilities.cs" />
+    <Compile Include="Taxonomia\OtherEquity.cs" />
+    <Compile Include="Taxonomia\OtherEquityChangesBalances.cs" />
+    <Compile Include="Taxonomia\OtherGeneralAdministrativeExpenses.cs" />
+    <Compile Include="Taxonomia\OtherIntangibleAssets.cs" />
+    <Compile Include="Taxonomia\OtherInventories.cs" />
+    <Compile Include="Taxonomia\OtherInvestingActivitiesNet.cs" />
+    <Compile Include="Taxonomia\OtherInvestments.cs" />
+    <Compile Include="Taxonomia\OtherLaborRelatedExpenses.cs" />
+    <Compile Include="Taxonomia\OtherLongTermDebt.cs" />
+    <Compile Include="Taxonomia\OtherNet.cs" />
+    <Compile Include="Taxonomia\OtherNonCurrentLiabilities.cs" />
+    <Compile Include="Taxonomia\OtherNonOperatingExpense.cs" />
+    <Compile Include="Taxonomia\OtherNonOperatingIncome.cs" />
+    <Compile Include="Taxonomia\OtherNonOperatingIncomeExpense.cs" />
+    <Compile Include="Taxonomia\OtherNonrecurringCharges.cs" />
+    <Compile Include="Taxonomia\OtherOperatingExpense.cs" />
+    <Compile Include="Taxonomia\OtherOperatingRevenue.cs" />
+    <Compile Include="Taxonomia\OtherPostretirementObligations.cs" />
+    <Compile Include="Taxonomia\OtherPrepaidExpenses.cs" />
+    <Compile Include="Taxonomia\OtherPropertyPlantEquipment.cs" />
+    <Compile Include="Taxonomia\OtherReceivablesNet.cs" />
+    <Compile Include="Taxonomia\OtherShortTermBorrowings.cs" />
+    <Compile Include="Taxonomia\ParValuePerShare.cs" />
+    <Compile Include="Taxonomia\PaymentCommonDividends.cs" />
+    <Compile Include="Taxonomia\PaymentDividends.cs" />
+    <Compile Include="Taxonomia\PaymentMinorityInterestDividends.cs" />
+    <Compile Include="Taxonomia\PaymentPreferredDividends.cs" />
+    <Compile Include="Taxonomia\PaymentRepurchasesEquity.cs" />
+    <Compile Include="Taxonomia\PaymentsMaterialsGoodsManufactureResale.cs" />
+    <Compile Include="Taxonomia\PaymentsOtherGoodsServices.cs" />
+    <Compile Include="Taxonomia\PaymentsRepurchaseOtherEquity.cs" />
+    <Compile Include="Taxonomia\PaymentsUnconsolidatedAffiliates.cs" />
+    <Compile Include="Taxonomia\PaymentsUnconsolidatedAffiliatesChangesBalances.cs" />
+    <Compile Include="Taxonomia\PensionObligation.cs" />
+    <Compile Include="Taxonomia\PensionOtherEmployeeBenefitExpense.cs" />
+    <Compile Include="Taxonomia\PensionsOPEB.cs" />
+    <Compile Include="Taxonomia\PostRetirementBenefitExpense.cs" />
+    <Compile Include="Taxonomia\PreferredStockDividends.cs" />
+    <Compile Include="Taxonomia\PreferredStockDividendsOtherAdjustments.cs" />
+    <Compile Include="Taxonomia\PreferredStockTransactionsNet.cs" />
+    <Compile Include="Taxonomia\PreOpeningCosts.cs" />
+    <Compile Include="Taxonomia\PrepaidAssetsLongTerm.cs" />
+    <Compile Include="Taxonomia\PrepaidExpenses.cs" />
+    <Compile Include="Taxonomia\PrepaidInsurance.cs" />
+    <Compile Include="Taxonomia\PrepaidPensionCosts.cs" />
+    <Compile Include="Taxonomia\PrepaidRent.cs" />
+    <Compile Include="Taxonomia\PrimaryFinancialStatements.cs" />
+    <Compile Include="Taxonomia\ProceedsConsolidatedSubsidiaries.cs" />
+    <Compile Include="Taxonomia\ProceedsFromfLifeInsurancePolicies.cs" />
+    <Compile Include="Taxonomia\ProceedsIssuanceCommonStock.cs" />
+    <Compile Include="Taxonomia\ProceedsIssuanceEquity.cs" />
+    <Compile Include="Taxonomia\ProceedsIssuancePreferredStock.cs" />
+    <Compile Include="Taxonomia\ProceedsIssuanceWarrants.cs" />
+    <Compile Include="Taxonomia\ProceedsLineCredit.cs" />
+    <Compile Include="Taxonomia\ProceedsLineCreditChangesBalances.cs" />
+    <Compile Include="Taxonomia\ProceedsLongTermDebt.cs" />
+    <Compile Include="Taxonomia\ProceedsNotesPayable.cs" />
+    <Compile Include="Taxonomia\ProceedsOtherDebt.cs" />
+    <Compile Include="Taxonomia\ProceedsOtherInvestments.cs" />
+    <Compile Include="Taxonomia\ProceedsSaleBusiness.cs" />
+    <Compile Include="Taxonomia\ProceedsSaleOtherAssets.cs" />
+    <Compile Include="Taxonomia\ProceedsSalePropertyPlantEquipment.cs" />
+    <Compile Include="Taxonomia\ProceedsSaleShortTermInvestmentsNet.cs" />
+    <Compile Include="Taxonomia\ProceedsShortTermBorrowings.cs" />
+    <Compile Include="Taxonomia\ProceedsStockOptionsExercised.cs" />
+    <Compile Include="Taxonomia\PropertyPlantEquipmentCost.cs" />
+    <Compile Include="Taxonomia\PropertyPlantEquipmentNet.cs" />
+    <Compile Include="Taxonomia\ProvisionDisposalDiscontinuedOperations.cs" />
+    <Compile Include="Taxonomia\ProvisionDoubtfulAccounts.cs" />
+    <Compile Include="Taxonomia\ProvisionDoubtfulAccountsChangesBalances.cs" />
+    <Compile Include="Taxonomia\ProvisionIncomeTaxes.cs" />
+    <Compile Include="Taxonomia\PurchaseConsolidatedSubsidiariesChangesBalances.cs" />
+    <Compile Include="Taxonomia\PurchaseInvestments.cs" />
+    <Compile Include="Taxonomia\PurchaseLifeInsurancePolicies.cs" />
+    <Compile Include="Taxonomia\PurchaseMarketableSecurities.cs" />
+    <Compile Include="Taxonomia\PurchaseNotesReceivable.cs" />
+    <Compile Include="Taxonomia\PurchaseOtherAssets.cs" />
+    <Compile Include="Taxonomia\PurchaseOtherInvestments.cs" />
+    <Compile Include="Taxonomia\PurchasePropertyPlantEquipment.cs" />
+    <Compile Include="Taxonomia\PurchaseShortTermInvestmentsNet.cs" />
+    <Compile Include="Taxonomia\PurchasesPaymentsInvestments.cs" />
+    <Compile Include="Taxonomia\PurchasesSalesTreasuryStockUnderEmployeePlansRetainedEarnings.cs" />
+    <Compile Include="Taxonomia\RealizedGainsLossesOnSaleInvestments.cs" />
+    <Compile Include="Taxonomia\RealizedGainsLossesOnSaleInvestmentsChangesBalances.cs" />
+    <Compile Include="Taxonomia\ReceivablesNet.cs" />
+    <Compile Include="Taxonomia\RelatedPartyDebtLongTerm.cs" />
+    <Compile Include="Taxonomia\RelatedPartyReceivablesNonCurrent.cs" />
+    <Compile Include="Taxonomia\RentalIncome.cs" />
+    <Compile Include="Taxonomia\RepaymentBorrowings.cs" />
+    <Compile Include="Taxonomia\RepaymentNotesReceivable.cs" />
+    <Compile Include="Taxonomia\RepaymentsOnLongTermDebt.cs" />
+    <Compile Include="Taxonomia\RepaymentsOnNotesPayable.cs" />
+    <Compile Include="Taxonomia\RepaymentsOtherLongTermDebt.cs" />
+    <Compile Include="Taxonomia\RepaymentsShortTermBorrowings.cs" />
+    <Compile Include="Taxonomia\RepurchaseCommonStock.cs" />
+    <Compile Include="Taxonomia\RepurchasePreferredCommonStock.cs" />
+    <Compile Include="Taxonomia\RepurchasePreferredStock.cs" />
+    <Compile Include="Taxonomia\ResearchDevelopmentExpense.cs" />
+    <Compile Include="Taxonomia\RestrictedCash.cs" />
+    <Compile Include="Taxonomia\RestrictedCashLongTerm.cs" />
+    <Compile Include="Taxonomia\RestructuringCharges.cs" />
+    <Compile Include="Taxonomia\RestructuringChargesChangesBalances.cs" />
+    <Compile Include="Taxonomia\RestructuringReserve.cs" />
+    <Compile Include="Taxonomia\RetainedEarnings.cs" />
+    <Compile Include="Taxonomia\RetainedEarningsAppropriated.cs" />
+    <Compile Include="Taxonomia\RetainedEarningsBalance.cs" />
+    <Compile Include="Taxonomia\RetainedEarningsNonappropriated.cs" />
+    <Compile Include="Taxonomia\RoyaltyExpense.cs" />
+    <Compile Include="Taxonomia\RoyaltyIncome.cs" />
+    <Compile Include="Taxonomia\Salaries.cs" />
+    <Compile Include="Taxonomia\SalariesWages.cs" />
+    <Compile Include="Taxonomia\SaleDebtEquitySecurities.cs" />
+    <Compile Include="Taxonomia\SaleInterestSubsidiary.cs" />
+    <Compile Include="Taxonomia\SaleInvestments.cs" />
+    <Compile Include="Taxonomia\SalesAllowances.cs" />
+    <Compile Include="Taxonomia\SalesDiscounts.cs" />
+    <Compile Include="Taxonomia\SalesReturns.cs" />
+    <Compile Include="Taxonomia\SalesReturnsAllowances.cs" />
+    <Compile Include="Taxonomia\SalesRevenueGross.cs" />
+    <Compile Include="Taxonomia\SalesRevenueGrossGoods.cs" />
+    <Compile Include="Taxonomia\SalesRevenueGrossServices.cs" />
+    <Compile Include="Taxonomia\SalesRevenueNet.cs" />
+    <Compile Include="Taxonomia\SalesTaxPayable.cs" />
+    <Compile Include="Taxonomia\SecuredDebtCurrent.cs" />
+    <Compile Include="Taxonomia\SecuredLongTerm.cs" />
+    <Compile Include="Taxonomia\SellingExpenses.cs" />
+    <Compile Include="Taxonomia\SellingGeneralAdministrativeExpenses.cs" />
+    <Compile Include="Taxonomia\SellingMarketingExpenses.cs" />
+    <Compile Include="Taxonomia\SharesAuthorized.cs" />
+    <Compile Include="Taxonomia\SharesIssued.cs" />
+    <Compile Include="Taxonomia\SharesOutstanding.cs" />
+    <Compile Include="Taxonomia\ShareSubscriptions.cs" />
+    <Compile Include="Taxonomia\ShortTermInvestments.cs" />
+    <Compile Include="Taxonomia\ShortTermRepaymentsBorrowingsNet.cs" />
+    <Compile Include="Taxonomia\SoftwareDevelopmentCosts.cs" />
+    <Compile Include="Taxonomia\StatementStockholdersEquity.cs" />
+    <Compile Include="Taxonomia\StatementStockholdersEquityContributedSurplus.cs" />
+    <Compile Include="Taxonomia\StatementStockholdersEquityContributedSurplusBalance.cs" />
+    <Compile Include="Taxonomia\StatementStockholdersEquityContributedSurplusChanges.cs" />
+    <Compile Include="Taxonomia\StatementStockholdersEquityCumulativeTranslationAdjustmentNetTaxEffectBalance.cs" />
+    <Compile Include="Taxonomia\StatementStockholdersEquityCumulativeTranslationAdjustmentNetTaxEffectChanges.cs" />
+    <Compile Include="Taxonomia\StatementStockholdersEquityCumulativeTranslationAdjustmentNetTaxEffectValue.cs" />
+    <Compile Include="Taxonomia\StatementStockholdersEquityRetainedEarningsBalance.cs" />
+    <Compile Include="Taxonomia\StatementStockholdersEquityRetainedEarningsChanges.cs" />
+    <Compile Include="Taxonomia\StatementStokholdersEquityRetainedEarnings.cs" />
+    <Compile Include="Taxonomia\Stock.cs" />
+    <Compile Include="Taxonomia\StockAppreciationRightsCurrentPortion.cs" />
+    <Compile Include="Taxonomia\StockAppreciationRightsLongTerm.cs" />
+    <Compile Include="Taxonomia\StockBalance.cs" />
+    <Compile Include="Taxonomia\StockBalanceNonParValue.cs" />
+    <Compile Include="Taxonomia\StockBalanceParValue.cs" />
+    <Compile Include="Taxonomia\StockBasedCompensation.cs" />
+    <Compile Include="Taxonomia\StockChanges.cs" />
+    <Compile Include="Taxonomia\StockChangesValue.cs" />
+    <Compile Include="Taxonomia\StockClass.cs" />
+    <Compile Include="Taxonomia\StockDividend.cs" />
+    <Compile Include="Taxonomia\StockDividendNumberShares.cs" />
+    <Compile Include="Taxonomia\StockDividendRetainedEarnings.cs" />
+    <Compile Include="Taxonomia\StockIssued.cs" />
+    <Compile Include="Taxonomia\StockIssuedChanges.cs" />
+    <Compile Include="Taxonomia\StockIssuedContributedSurplus.cs" />
+    <Compile Include="Taxonomia\StockIssuedEmployeesRestrictedShares.cs" />
+    <Compile Include="Taxonomia\StockIssuedEmployeesRestrictedSharesContributedSurplus.cs" />
+    <Compile Include="Taxonomia\StockIssuedEmployeesRestrictedSharesNumberShares.cs" />
+    <Compile Include="Taxonomia\StockIssuedEmployeesRestrictedSharesRetainedEarnings.cs" />
+    <Compile Include="Taxonomia\StockIssuedEmployeeStockPurchasePlan.cs" />
+    <Compile Include="Taxonomia\StockIssuedEmployeeStockPurchasePlanContributedSurplus.cs" />
+    <Compile Include="Taxonomia\StockIssuedEmployeeStockPurchasePlanNumberShares.cs" />
+    <Compile Include="Taxonomia\StockIssuedEmployeeStockPurchasePlanRetainedEarnings.cs" />
+    <Compile Include="Taxonomia\StockIssuedInitialPublicOffering.cs" />
+    <Compile Include="Taxonomia\StockIssuedInitialPublicOfferingContributedSurplus.cs" />
+    <Compile Include="Taxonomia\StockIssuedInitialPublicOfferingContributedSurplusPar.cs" />
+    <Compile Include="Taxonomia\StockIssuedInitialPublicOfferingNonParValue.cs" />
+    <Compile Include="Taxonomia\StockIssuedInitialPublicOfferingNumberShares.cs" />
+    <Compile Include="Taxonomia\StockIssuedInitialPublicOfferingNumberSharesNonParValue.cs" />
+    <Compile Include="Taxonomia\StockIssuedInitialPublicOfferingNumberSharesParValue.cs" />
+    <Compile Include="Taxonomia\StockIssuedInitialPublicOfferingParValue.cs" />
+    <Compile Include="Taxonomia\StockIssuedNumberShares.cs" />
+    <Compile Include="Taxonomia\StockIssuedPrivatePlacement.cs" />
+    <Compile Include="Taxonomia\StockIssuedProfitSharingPlan.cs" />
+    <Compile Include="Taxonomia\StockIssuedProfitSharingPlanContributedSurplus.cs" />
+    <Compile Include="Taxonomia\StockIssuedProfitSharingPlanNumberShares.cs" />
+    <Compile Include="Taxonomia\StockIssuedProfitSharingPlanRetainedEarnings.cs" />
+    <Compile Include="Taxonomia\StockIssuedPursuantAcquisition.cs" />
+    <Compile Include="Taxonomia\StockIssuedPursuantAcquisitionContributedSurplus.cs" />
+    <Compile Include="Taxonomia\StockIssuedPursuantAcquisitionNumberShares.cs" />
+    <Compile Include="Taxonomia\StockIssuedRetainedEarnings.cs" />
+    <Compile Include="Taxonomia\StockIssuedStockSplitsNumberShares.cs" />
+    <Compile Include="Taxonomia\StockNumberSharesBalance.cs" />
+    <Compile Include="Taxonomia\StockNumberSharesBalanceNonParValue.cs" />
+    <Compile Include="Taxonomia\StockNumberSharesBalanceParValue.cs" />
+    <Compile Include="Taxonomia\StockPurchasedRetired.cs" />
+    <Compile Include="Taxonomia\StockPurchasedRetiredContributedSurplus.cs" />
+    <Compile Include="Taxonomia\StockPurchasedRetiredNumberShares.cs" />
+    <Compile Include="Taxonomia\StockPurchasedRetiredRetainedEarnings.cs" />
+    <Compile Include="Taxonomia\StockType.cs" />
+    <Compile Include="Taxonomia\SubordinatedDebtCurrent.cs" />
+    <Compile Include="Taxonomia\SubordinatedDebtLongTerm.cs" />
+    <Compile Include="Taxonomia\SubordinatedDebtShortTermLongTerm.cs" />
+    <Compile Include="Taxonomia\SubsidiesandGrantsIncome.cs" />
+    <Compile Include="Taxonomia\SupplementalDisclosure.cs" />
+    <Compile Include="Taxonomia\TaxBenefitExerciseStockOptions.cs" />
+    <Compile Include="Taxonomia\TaxEffectExtraordinaryItems.cs" />
+    <Compile Include="Taxonomia\TaxEffectIncomeLossDiscontinuedOperations.cs" />
+    <Compile Include="Taxonomia\TaxEffectOnIncomeLossDispositionDiscontinuedOperations.cs" />
+    <Compile Include="Taxonomia\TaxEffectStockTransactions.cs" />
+    <Compile Include="Taxonomia\TaxEffectStockTransactionsContributedSurplus.cs" />
+    <Compile Include="Taxonomia\TaxesOtherThanIncomeTaxes.cs" />
+    <Compile Include="Taxonomia\TaxesOtherThanIncomeTaxesAccrual.cs" />
+    <Compile Include="Taxonomia\TaxesPaid.cs" />
+    <Compile Include="Taxonomia\TotalAssets.cs" />
+    <Compile Include="Taxonomia\TotalCostGoodsServicesSold.cs" />
+    <Compile Include="Taxonomia\TotalCurrentAssets.cs" />
+    <Compile Include="Taxonomia\TotalCurrentLiabilities.cs" />
+    <Compile Include="Taxonomia\TotalEquity.cs" />
+    <Compile Include="Taxonomia\TotalLiabilities.cs" />
+    <Compile Include="Taxonomia\TotalLiabilitiesStockholdersEquity.cs" />
+    <Compile Include="Taxonomia\TotalNetCashFlowsProvidedByUsedFinancingActivities.cs" />
+    <Compile Include="Taxonomia\TotalNetCashFlowsProvidedByUsedInvestingActivities.cs" />
+    <Compile Include="Taxonomia\TotalNetCashFlowsProvidedByUsedOperatingActivitiesDirect.cs" />
+    <Compile Include="Taxonomia\TotalNetCashFlowsProvidedByUsedOperatingActivitiesIndirect.cs" />
+    <Compile Include="Taxonomia\TotalNonCurrentAssets.cs" />
+    <Compile Include="Taxonomia\TotalNonCurrentLiabilities.cs" />
+    <Compile Include="Taxonomia\TotalOperatingExpenses.cs" />
+    <Compile Include="Taxonomia\TotalOperatingRevenue.cs" />
+    <Compile Include="Taxonomia\TradeAccountsPayable.cs" />
+    <Compile Include="Taxonomia\TravelEntertainmentExpense.cs" />
+    <Compile Include="Taxonomia\UnbilledReceivablesNetCurrentPortion.cs" />
+    <Compile Include="Taxonomia\UndistributedEarningsAffiliates.cs" />
+    <Compile Include="Taxonomia\UnrealizedGainLossSecurities.cs" />
+    <Compile Include="Taxonomia\UnrestrictedCash.cs" />
+    <Compile Include="Taxonomia\UnsecuredDebtCurrent.cs" />
+    <Compile Include="Taxonomia\UnsecuredLongTerm.cs" />
+    <Compile Include="Taxonomia\Value.cs" />
+    <Compile Include="Taxonomia\Vehicles.cs" />
+    <Compile Include="Taxonomia\WarrantiesRelatedAccrualsShortTermLongTerm.cs" />
+    <Compile Include="Taxonomia\WarrantsRightsOutstanding.cs" />
+    <Compile Include="Taxonomia\WarrantyRelatedAccrualsCurrent.cs" />
+    <Compile Include="Taxonomia\WeightedAverageNumberDilutedSharesOutstanding.cs" />
+    <Compile Include="Taxonomia\WeightedAverageNumberSharesOutstanding.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\dotXbrl\dotXbrl.csproj">
+      <Project>{983DCD37-884F-4CFE-8459-88FC61232D01}</Project>
+      <Name>dotXbrl</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
