@@ -75,10 +75,6 @@
     <Content Include="XlinkPrueba1.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="XBRL\ClassDiagram2.cd" />
-    <None Include="Xlink\ClassDiagram.cd" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="data\" />
   </ItemGroup>
   <Import Condition="'$(TargetFrameworkVersion)' == 'v1.0'" Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.v1.targets" />
