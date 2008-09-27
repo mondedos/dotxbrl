@@ -21,9 +21,10 @@ namespace dotXbrl.xbrlApi.XBRL
         private ICollection<XmlElement> _instanciasConceptosPorProcesar = null;
         private System.Collections.Hashtable _contextos;
         private System.Reflection.Assembly _ensambladoCiente;
-        private string _baseUri, _directorio="";
+        private string _directorio = "";
+        private StringBuilder _baseUri;
         private bool _esValido = true, _generarCodigo = false;
-        
+
 
         #endregion
 
@@ -36,7 +37,7 @@ namespace dotXbrl.xbrlApi.XBRL
             _esValido = true;
             _document = new XmlDocument();
 
-            
+
             //leemos el xml
             _document.Load(documentoInstancia.OriginalString);
 
@@ -225,15 +226,16 @@ namespace dotXbrl.xbrlApi.XBRL
         }
         void xbrlElementDefinition(XmlElement xbrl)
         {
-            _baseUri = "";
+            _baseUri = new StringBuilder();
 
             Uri uri = new Uri(xbrl.BaseURI);
 
-            _baseUri += uri.Scheme + "://" + uri.Host;
+            _baseUri.Append(uri.Scheme).Append("://").Append(uri.Host);
 
-            for (int i = 0; i < uri.Segments.Length - 1; i++)
+            int uriSegmentsLength=uri.Segments.Length;
+            for (int i = 0; i < uriSegmentsLength - 1; i++)
             {
-                _baseUri += uri.Segments[i];
+                _baseUri.Append(uri.Segments[i]);
             }
 
             //buscamos las taxonomías
@@ -354,41 +356,44 @@ namespace dotXbrl.xbrlApi.XBRL
                 {
                     XmlNode identificador = estructura.FirstChild;
 
-                    contexto.Identificador.Descripcion = identificador.FirstChild.Value;
-                    contexto.Identificador.URI = identificador.Attributes[0].Value;
+                    IIdentificadorContexto contextoIdentificador = contexto.Identificador;
+                    contextoIdentificador.Descripcion = identificador.FirstChild.Value;
+                    contextoIdentificador.URI = identificador.Attributes[0].Value;
 
                     //extraccion de segmentos
-                    XmlNode segmentos = estructura.FirstChild.NextSibling;
+                    XmlNode segmentos = identificador.NextSibling;
 
                     if (segmentos != null)
                     {
+                        XmlElement segmentos = contexto.Segmentos;
                         foreach (XmlElement segmento in segmentos.ChildNodes)
                         {
-                            contexto.Segmentos.Add(segmento);
+                            segmentos.Add(segmento);
                         }
                     }
                 }
                 else if (e.Equals("period"))
                 {
-                    string elem = estructura.FirstChild.Name.ToLower();
+                    XmlNode primerHijo = estructura.FirstChild;
+                    string elem = primerHijo.Name.ToLower();
 
                     if (elem.Equals("startdate"))
                     {
-                        IPeriodoInicioFin periodo = new PeriodoInicioFin(estructura.FirstChild.FirstChild.Value,
-                            estructura.FirstChild.NextSibling.FirstChild.Value);
+                        IPeriodoInicioFin periodo = new PeriodoInicioFin(primerHijo.FirstChild.Value,
+                            primerHijo.NextSibling.FirstChild.Value);
 
                         contexto.Periodo = periodo;
                     }
                     else
                     {
-                        IPeriodoInstante periodo = new PeriodoInstante(estructura.FirstChild.FirstChild.Value);
+                        IPeriodoInstante periodo = new PeriodoInstante(primerHijo.FirstChild.Value);
 
                         contexto.Periodo = periodo;
                     }
                 }
-                else if (e.Equals("scenario"))
-                {
-                }
+                //else if (e.Equals("scenario"))
+                //{
+                //}
             }
 
             _contextos.Add(contexto.Id, contexto);
@@ -405,10 +410,15 @@ namespace dotXbrl.xbrlApi.XBRL
                 if (nombrePartido.Length > 1 && nombrePartido[1].ToLower().Equals("schemaref"))
                 {
                     //estamos en la referencia a una taxonomía
-                    _taxonomias.Insertar(_baseUri + encaleSimple.Recurso);
+                    _taxonomias.Insertar(_baseUri.ToString() + encaleSimple.Recurso);
                 }
             }
         }
+        /// <summary>
+        /// Muestra por consola si se ha producido algún error en el proceso de compilación.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void ShowCompileErrors(object sender, ValidationEventArgs e)
         {
             _esValido = false;
