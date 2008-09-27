@@ -18,7 +18,7 @@ namespace dotXbrl.xbrlApi.Taxonomia
         private bool _generarCodigo = false;
         private ICollection<string> _clases;
         private System.Reflection.Assembly _ensambladoCliente;
-        private string _prefijo4Normativo, _prefijoTaxonomíaActual,_nombreDirectorioACrear="";
+        private string _prefijo4Normativo, _prefijoTaxonomíaActual, _nombreDirectorioACrear = "";
 
         public ICollection<string> Clases
         {
@@ -158,10 +158,11 @@ namespace dotXbrl.xbrlApi.Taxonomia
                     if (_generarCodigo)
                         gc.generarCodigo(item);
                     else
-                        _clases.Add(gc.generarClase(item));
+                        _clases.Add(gc.generarClase(item).ToString());
                 }
-                else if (grupoSustitucion.Equals("tuple"))
+                else if (grupoSustitucion.Equals("tuple") && !tuplasPorRevisar.Contains(concepto.Name))
                 {
+
                     tuplasPorRevisar.Add(concepto.Name, concepto);
                 }
             }
@@ -203,7 +204,7 @@ namespace dotXbrl.xbrlApi.Taxonomia
                     if (_generarCodigo)
                         gc.generarCodigo(tupla);
                     else
-                        _clases.Add(gc.generarClase(tupla));
+                        _clases.Add(gc.generarClase(tupla).ToString());
                 }
             }
         }

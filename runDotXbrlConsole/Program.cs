@@ -19,7 +19,7 @@ namespace runDotXbrlConsole
             //validador.Validate();
 
 
-            IXBLRProcesador procesador = new XBRLProcesadorProveedor(new Uri("http://www.xbrl.org/ca/fr/gaap/pfs/2004-11-20/SampleInstance.xbrl"));
+            IXBLRProcesador procesador = new XBRLProcesadorProveedor(new Uri("http://www.bde.es/cenbal/taxonomia/es-be-cb-2006-04-30/Informes/CBAN-Informes/03-Perdidas.xbrl"));
 
             //IXBLRProcesador procesador = new XBRLProcesadorProveedor(new Uri("http://www.bapepam.go.id/pasar_modal/publikasi_pm/info_pm/xbrl/xbrl/icm-instance-1.xbrl"));
 
