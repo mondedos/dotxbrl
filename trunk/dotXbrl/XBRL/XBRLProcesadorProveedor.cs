@@ -36,6 +36,7 @@ namespace dotXbrl.xbrlApi.XBRL
             _esValido = true;
             _document = new XmlDocument();
 
+            
             //leemos el xml
             _document.Load(documentoInstancia.OriginalString);
 

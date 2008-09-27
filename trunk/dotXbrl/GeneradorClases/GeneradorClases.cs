@@ -61,39 +61,44 @@ namespace dotXbrl.GeneradorClases
 
         #endregion
 
-        public string generarCodigo(IXBRLTupleDef tupla)
+        public StringBuilder generarCodigo(IXBRLTupleDef tupla)
         {
-            string nombreClase, codigo;
-            generarCodigoClase(tupla, out nombreClase, out codigo, true);
+            StringBuilder nombreClase = new StringBuilder(), codigo = new StringBuilder();
+            generarCodigoClase(tupla, nombreClase, codigo, true);
 
-            escribirFicheroCodigo(new StringBuilder(codigo), nombreClase);
+            escribirFicheroCodigo(codigo, nombreClase);
 
             return nombreClase;
         }
-        public string generarCodigo(IXBRLItemDef item)
+        public StringBuilder generarCodigo(IXBRLItemDef item)
         {
-            string nombreClase, codigo;
-            generarCodigoClase(item, out nombreClase, out codigo, true);
+            StringBuilder nombreClase , codigo = new StringBuilder();
+            generarCodigoClase(item,out nombreClase, codigo, true);
 
-            escribirFicheroCodigo(new StringBuilder(codigo), nombreClase);
-            escribirFicheroCodigo(new StringBuilder(generarAtributeClass()), "Elemento");
+            escribirFicheroCodigo(codigo, nombreClase);
+            escribirFicheroCodigo(generarAtributeClass(), new StringBuilder( "Elemento"));
 
             return nombreClase;
         }
-        public string generarClase(IXBRLItemDef item)
+        public StringBuilder generarClase(IXBRLItemDef item)
         {
-            string nombreClase, codigo;
-            generarCodigoClase(item, out nombreClase, out codigo, false);
+            StringBuilder nombreClase = new StringBuilder(), codigo = new StringBuilder();
+            generarCodigoClase(item,out nombreClase, codigo, false);
 
             Type t = null;
             if (_ensamblado != null)
-                t = _ensamblado.GetType("dotXbrl." + nombreClase);
+                t = _ensamblado.GetType("dotXbrl." + nombreClase.ToString());
             if (t == null)
-                compilarClase(codigo, nombreClase);
+                compilarClase(codigo.ToString(), nombreClase.ToString());
 
             return nombreClase;
         }
-        private static void escribirFicheroCodigo(StringBuilder codigo, string nombreClase)
+        /// <summary>
+        /// Genera un fichero con extensión .cs cuyo contenido es el código pasado por referencia.
+        /// </summary>
+        /// <param name="codigo">codigo c#</param>
+        /// <param name="nombreClase">nombre del fichero sin extensión</param>
+        private static void escribirFicheroCodigo(StringBuilder codigo, StringBuilder nombreClase)
         {
             StringBuilder sbFile = new StringBuilder();
             StreamWriter swWriter;
@@ -108,7 +113,7 @@ namespace dotXbrl.GeneradorClases
                 informacionDirectorio.Create();
             //construimos la ruta del fichero a crear
             sbFile.Append(sDirLog);
-            sbFile.Append(@"\" + _nombreDirectorio + @"\" + nombreClase);
+            sbFile.Append(@"\").Append(_nombreDirectorio).Append(@"\").Append(nombreClase);
             sbFile.Append(".cs");
             fileName = sbFile.ToString();
             //si existe no hacemos nada
@@ -122,24 +127,24 @@ namespace dotXbrl.GeneradorClases
                 swWriter.Close();
             }
         }
-        public string generarClase(IXBRLTupleDef tupla)
+        public StringBuilder generarClase(IXBRLTupleDef tupla)
         {
 
-            string nombreClase, codigo;
-            generarCodigoClase(tupla, out nombreClase, out codigo, false);
+            StringBuilder nombreClase = new StringBuilder(), codigo = new StringBuilder();
+            generarCodigoClase(tupla, nombreClase, codigo, false);
 
             compilarClase(codigo, nombreClase);
 
             return nombreClase;
         }
-        private void generarCodigoClase(IXBRLItemDef item, out string nombreClase, out string codigo, bool generarMetodosEstaticos)
+        private void generarCodigoClase(IXBRLItemDef item,out StringBuilder nombreClase, StringBuilder codigo, bool generarMetodosEstaticos)
         {
             _item = item;
             nombreClase = obtenerNombreClaseITem();
 
-            string atributos = "", geterSeter = "";
+            StringBuilder atributos = new StringBuilder(), geterSeter = new StringBuilder();
             StringBuilder metodosEstaticos = new StringBuilder();
-            generadorMetodosEstaticos(nombreClase, metodosEstaticos);
+            generadorMetodosEstaticos(nombreClase.ToString(), metodosEstaticos);
             string comentarioIniio = "", comentarioFin = "";
             StringBuilder atribNombreClase = new StringBuilder("\"");
 
@@ -154,7 +159,7 @@ namespace dotXbrl.GeneradorClases
                 atribNombreClase.Append(item.ElementoItem.QualifiedName.Namespace);
                 atribNombreClase.Append("\"");
             }
-            string atributeClass = "";
+            StringBuilder atributeClass = new StringBuilder();
             if (!generarMetodosEstaticos)
             {
                 comentarioFin = "*/";
@@ -162,9 +167,9 @@ namespace dotXbrl.GeneradorClases
                 atributeClass = generarAtributeClass();
             }
 
-            obtenerAtributosItem(ref atributos, ref geterSeter);
+            obtenerAtributosItem(atributos, geterSeter);
             #region Codigo a generar
-            codigo = @"using System;
+            codigo.Append(@"using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
@@ -172,33 +177,33 @@ using System.Xml;
 using dotXbrl.xbrlApi.XBRL;
 
 namespace dotXbrl{
-    [Element(" + atribNombreClase.ToString() + @")]
-    public class " + nombreClase + @":IConcepto
+    [Element(").Append(atribNombreClase).Append(@")]
+    public class ").Append(nombreClase).Append(@":IConcepto
     {
 private dotXbrl.xbrlApi.XBRL.IContexto _contexto = null;
 #region Atributos
-        " + atributos + @"
+        ").Append(atributos).Append(@"
 #endregion
 #region Propiedades
-        " + geterSeter + @"
+        ").Append(geterSeter).Append(@"
 #endregion
-        public " + nombreClase + @"(){}
+        public ").Append(nombreClase).Append(@"(){}
     #region IConcepto Members
     dotXbrl.xbrlApi.XBRL.IContexto dotXbrl.xbrlApi.XBRL.IConcepto.getContexto() { return _contexto; }
     void dotXbrl.xbrlApi.XBRL.IConcepto.setContexto(dotXbrl.xbrlApi.XBRL.IContexto contexto) { _contexto = contexto; }
     #endregion
-    " + comentarioIniio + @"
-        " + metodosEstaticos.ToString() + @"
-    " + comentarioFin + @"
+    ").Append(comentarioIniio).Append(@"
+        ").Append(metodosEstaticos).Append(@"
+    ").Append(comentarioFin).Append(@"
     }
 }
 
-";
+");
             #endregion
         }
-        private string generarAtributeClass()
+        private StringBuilder generarAtributeClass()
         {
-            return @"
+            return new StringBuilder(@"
 [System.AttributeUsage(System.AttributeTargets.Class |
                    System.AttributeTargets.Struct)]
 public class Element : System.Attribute
@@ -230,30 +235,27 @@ public class Element : System.Attribute
     {
         return _prefix;
     }
-}";
+}");
         }
-        private void obtenerAtributosItem(ref string atributos, ref string geterSeter)
+        private void obtenerAtributosItem(StringBuilder atributos, StringBuilder geterSeter)
         {
-            atributos += String.Format("private {0} {1};\n\r\t", _item.Tipo.Name, "valor");
+            atributos.Append(String.Format("private {0} {1};\n\r\t", _item.Tipo.Name, "valor"));
 
             char izq = '{', der = '}';
+            geterSeter.Append(String.Format("public {0} {1}{2}\n\r\t", _item.Tipo.Name, "Valor", izq));
 
-            string src = "";
-            src += String.Format("public {0} {1}{2}\n\r\t", _item.Tipo.Name, "Valor", izq);
+            geterSeter.Append(String.Format("get{1} return {0}; {2}", "valor", izq, der));
+            geterSeter.Append(String.Format("set{1} {0} = value;{2}{2}", "valor", izq, der)).Append("\n\r\t");
 
-            src += String.Format("get{1} return {0}; {2}", "valor", izq, der);
-            src += String.Format("set{1} {0} = value;{2}{2}", "valor", izq, der) + "\n\r\t";
-
-            geterSeter += src;
         }
-        private void generarCodigoClase(IXBRLTupleDef tupla, out string nombreClase, out string codigo, bool generarMetodosEstaticos)
+        private void generarCodigoClase(IXBRLTupleDef tupla,  StringBuilder nombreClase, StringBuilder codigo, bool generarMetodosEstaticos)
         {
             _tupla = tupla;
-            nombreClase = obtenerNombreClaseTupla();
+            nombreClase = new StringBuilder(obtenerNombreClaseTupla());
 
-            string atributos = "", geterSeter = "";
+            StringBuilder atributos = new StringBuilder(), geterSeter = new StringBuilder();
             StringBuilder metodosEstaticos = new StringBuilder();
-            generadorMetodosEstaticos(nombreClase, metodosEstaticos);
+            generadorMetodosEstaticos(nombreClase.ToString(), metodosEstaticos);
             string comentarioIniio = "", comentarioFin = "";
             StringBuilder atribNombreClase = new StringBuilder("\"");
 
@@ -268,7 +270,7 @@ public class Element : System.Attribute
                 atribNombreClase.Append(tupla.ElementoTupla.QualifiedName.Namespace);
                 atribNombreClase.Append("\"");
             }
-            string atributeClass = "";
+            StringBuilder atributeClass = new StringBuilder();
             if (!generarMetodosEstaticos)
             {
                 comentarioFin = "*/";
@@ -276,9 +278,9 @@ public class Element : System.Attribute
                 atributeClass = generarAtributeClass();
             }
 
-            obtenerAtributosTuple(ref atributos, ref geterSeter);
+            obtenerAtributosTuple(atributos, geterSeter);
             #region Codigo a generar
-            codigo = @"using System;
+            codigo.Append(@"using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
@@ -286,17 +288,17 @@ using System.Xml;
 using dotXbrl.xbrlApi.XBRL;
 
 namespace dotXbrl{
-[Element(" + atribNombreClase.ToString() + @")]
-public class " + nombreClase + @":dotXbrl.xbrlApi.XBRL.IConcepto
+[Element(").Append(atribNombreClase).Append(@")]
+public class ").Append(nombreClase).Append(@":dotXbrl.xbrlApi.XBRL.IConcepto
 {
 private dotXbrl.xbrlApi.XBRL.IContexto _contexto = null;
 #region Atributos
-    " + atributos + @"
+    ").Append(atributos).Append(@"
 #endregion
 #region Propiedades
-    " + geterSeter + @"
+    ").Append(geterSeter).Append(@"
 #endregion
-    public " + nombreClase + @"(){}
+    public ").Append(nombreClase).Append(@"(){}
 
     #region IConcepto Members
 
@@ -312,16 +314,19 @@ private dotXbrl.xbrlApi.XBRL.IContexto _contexto = null;
 
     #endregion
 
-" + comentarioIniio + @"
-    " + metodosEstaticos.ToString() + @"
-" + comentarioFin + @"
+").Append(comentarioIniio).Append(@"
+    ").Append(metodosEstaticos).Append(@"
+").Append(comentarioFin).Append(@"
 }
 }
-" + atributeClass + @"
-";
+").Append(atributeClass).Append(@"
+");
             #endregion
         }
-
+        private void compilarClase(StringBuilder codigo, StringBuilder nombreClase)
+        {
+            compilarClase(codigo.ToString(), nombreClase.ToString());
+        }
         private void compilarClase(string codigo, string nombreClase)
         {
             foreach (Type type in _assembly.GetTypes())
@@ -329,14 +334,13 @@ private dotXbrl.xbrlApi.XBRL.IContexto _contexto = null;
                 if (type.IsClass == true)
                 {
 
-                    object[] param = new object[1];
-                    param[0] = codigo;
+                    object[] param = new object[] { codigo };
 
-                    Assembly a = (Assembly)type.InvokeMember("GenerarObjeto", BindingFlags.Default | BindingFlags.InvokeMethod, null, null, param);
-                    if (a != null)
+                    Assembly ensamblado = (Assembly)type.InvokeMember("GenerarObjeto", BindingFlags.Default | BindingFlags.InvokeMethod, null, null, param);
+                    if (ensamblado != null)
                     {
                         if (!_assemblies.Contains(nombreClase))
-                            _assemblies.Add(nombreClase, a);
+                            _assemblies.Add(nombreClase, ensamblado);
                     }
                 }
                 break;
@@ -349,19 +353,20 @@ private dotXbrl.xbrlApi.XBRL.IContexto _contexto = null;
         /// <returns>instancia del concepto</returns>
         public object ObtenerInstancia(string clase)
         {
+            string fullNameClass = "dotXbrl." + clase;
             if (_assemblies.ContainsKey(clase))
             {
                 Assembly a = (Assembly)_assemblies[clase];
                 Type helloType = Type.GetType(clase);
-                return a.CreateInstance("dotXbrl." + clase);
+                return a.CreateInstance(fullNameClass);
             }
             else
             {
                 if (_ensamblado != null)
                 {
-                    Type t = _ensamblado.GetType("dotXbrl." + clase);
+                    Type t = _ensamblado.GetType(fullNameClass);
                     if (t != null)
-                        return _ensamblado.CreateInstance("dotXbrl." + clase);
+                        return _ensamblado.CreateInstance(fullNameClass);
                     else
                         return null;
                 }
@@ -373,16 +378,13 @@ private dotXbrl.xbrlApi.XBRL.IContexto _contexto = null;
             //mi.Invoke(hello, new object[] { });
         }
 
-        private void obtenerAtributosTuple(ref string atributos, ref string getterSetter)
+        private void obtenerAtributosTuple(StringBuilder atributos, StringBuilder getterSetter)
         {
-            StringBuilder atributosSb = new StringBuilder(), getterSetterSb = new StringBuilder();
             foreach (IXBRLItemDef item in _tupla.Celdas)
             {
-                atributosSb.Append(generarAtributoTuple(item));
-                generarGetterSetterTuple(item, getterSetterSb);
+                atributos.Append(generarAtributoTuple(item));
+                generarGetterSetterTuple(item, getterSetter);
             }
-            atributos = atributosSb.ToString();
-            getterSetter = getterSetterSb.ToString();
         }
 
         private void generarGetterSetterTuple(IXBRLItemDef item, StringBuilder src)
@@ -396,9 +398,13 @@ private dotXbrl.xbrlApi.XBRL.IContexto _contexto = null;
 
             src.Append(String.Format("public {0} {1}{2}\n\r\t", nombreTipo, nombrePropiedad, izq));
             src.Append(String.Format("get{1} return {0}; {2}", nombreAtributo, izq, der));
-            src.Append(String.Format("set{1} {0} = value;{2}{2}", nombreAtributo, izq, der) + "\n\r\t");
+            src.Append(String.Format("set{1} {0} = value;{2}{2}", nombreAtributo, izq, der)).Append("\n\r\t");
         }
-
+        /// <summary>
+        /// Genera el código asociado al atributo privado de un atributo de una tupla XBRL
+        /// </summary>
+        /// <param name="item">Definición de item</param>
+        /// <returns>código c#</returns>
         private string generarAtributoTuple(IXBRLItemDef item)
         {
             string nombreAtributo = item.Nombre.Replace(':', '_').Replace('-', '_');
@@ -412,12 +418,18 @@ private dotXbrl.xbrlApi.XBRL.IContexto _contexto = null;
             string nombreTupla = _tupla.Nombre.Replace(':', '_').Replace('-', '_');
             return nombreTupla;
         }
-        private string obtenerNombreClaseITem()
+        private StringBuilder obtenerNombreClaseITem()
         {
             string[] e = _item.Nombre.Split(':');
             string nombreTupla = e[e.Length - 1].Replace('-', '_');
-            return nombreTupla;
+            return new StringBuilder(nombreTupla);
         }
+        /// <summary>
+        /// Genera los métodos estáticos de la nueva clase que permitirán obtener instancias de las tuplas
+        /// asociadas a su clase a partir de los ficheros XBRL instancia.
+        /// </summary>
+        /// <param name="nombreClase"></param>
+        /// <param name="codigo"></param>
         private void generadorMetodosEstaticos(string nombreClase, StringBuilder codigo)
         {
             #region Definicion de codigo
